@@ -3,11 +3,13 @@
 //
 
 #include <iostream>
-#include <basic.h>
+#include "linked_list.h"
 
 using namespace std;
 
 int main() {
-    cout << add(1,1) << endl;
+    LinkedList ll;
+    ll.insert(10);
+    ll.insert(11);
     return 0;
 }

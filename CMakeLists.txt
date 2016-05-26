@@ -13,7 +13,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${dir}/build")
 
 include_directories("${PROJECT_SOURCE_DIR}/src")
 
-set (SOURCE_FILES src/basic.cpp src/basic.h)
+set (SOURCE_FILES src/linked_list.cpp src/linked_list.h)
 add_library(src_lib ${SOURCE_FILES})
 
 add_executable(scratch main.cpp)
@@ -28,7 +28,8 @@ include_directories(${gtest_SOURCE_DIR})
 
 include_directories("${PROJECT_SOURCE_DIR}/test")
 
-add_executable(testBasic test/test_basic.cpp)
+set (TEST_FILES test/test_linked_list.cpp)
+add_executable(testBasic ${TEST_FILES})
 add_dependencies(testBasic googletest)
 
 target_link_libraries(testBasic ${GTEST_LIBS_DIR}/libgtest.a ${GTEST_LIBS_DIR}/libgtest_main.a)
