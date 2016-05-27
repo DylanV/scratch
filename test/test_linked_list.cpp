@@ -6,18 +6,18 @@
 #include "linked_list.h"
 
 TEST(LinkedListIntTest, ConstructorStartEmpty) {
-    LinkedList<int> ll = LinkedList<int>();
+    LinkedList<int> ll;
     ASSERT_EQ(0, ll.get_size());
 }
 
 TEST(LinkedListIntTest, InsertSingleCheckSize) {
-    LinkedList<int> ll = LinkedList<int>();
+    LinkedList<int> ll;
     ASSERT_TRUE(ll.insert(4));
     ASSERT_EQ(1, ll.get_size());
 }
 
 TEST(LinkedListIntTest, InsertGetMutiple) {
-    LinkedList<int> ll = LinkedList<int>();
+    LinkedList<int> ll;
 
     ASSERT_TRUE(ll.insert(4));
     ASSERT_EQ(4, ll.get(0));
@@ -33,7 +33,7 @@ TEST(LinkedListIntTest, InsertGetMutiple) {
 }
 
 TEST(LinkedListIntTest, InsertMutipleCheckIndices) {
-    LinkedList<int> ll = LinkedList<int>();
+    LinkedList<int> ll;
     ll.insert(4);
     ll.insert(7);
     ll.insert(10);
@@ -44,7 +44,7 @@ TEST(LinkedListIntTest, InsertMutipleCheckIndices) {
 }
 
 TEST(LinkedListIntTest, Remove) {
-    LinkedList<int> ll = LinkedList<int>();
+    LinkedList<int> ll;
     ll.insert(4);
     ll.insert(7);
     ll.insert(10);
@@ -57,7 +57,7 @@ TEST(LinkedListIntTest, Remove) {
 
 
 TEST(LinkedListIntTest, GetIndexValueNotFound) {
-    LinkedList<int> ll = LinkedList<int>();
+    LinkedList<int> ll;
     ll.insert(4);
     ll.insert(7);
 
@@ -65,7 +65,7 @@ TEST(LinkedListIntTest, GetIndexValueNotFound) {
 }
 
 TEST(LinkedListIntTest, RemoveHead) {
-    LinkedList<int> ll = LinkedList<int>();
+    LinkedList<int> ll;
     ll.insert(4);
     ll.insert(7);
     ASSERT_TRUE(ll.remove(0));
@@ -74,7 +74,7 @@ TEST(LinkedListIntTest, RemoveHead) {
 }
 
 TEST(LinkedListIntTest, RemoveLastElement) {
-    LinkedList<int> ll = LinkedList<int>();
+    LinkedList<int> ll;
     ll.insert(4);
     ll.insert(7);
 
@@ -86,13 +86,13 @@ TEST(LinkedListIntTest, RemoveLastElement) {
 }
 
 TEST(LinkedListIntTest, InsertGetWithOperator) {
-    LinkedList<int> ll = LinkedList<int>();
+    LinkedList<int> ll;
     ASSERT_TRUE(ll.insert(4));
     ASSERT_EQ(4, ll[0]);
 }
 
 TEST(LinkedListTypeTest, Float) {
-    LinkedList<float> ll = LinkedList<float>();
+    LinkedList<float> ll;
     ASSERT_TRUE(ll.insert(10));
     ASSERT_EQ(1, ll.get_size());
     ASSERT_TRUE(ll.insert(20));
@@ -105,7 +105,7 @@ TEST(LinkedListTypeTest, Float) {
 }
 
 TEST(LinkedListTypeTest, String) {
-    LinkedList<std::string> ll = LinkedList<std::string>();
+    LinkedList<std::string> ll;
     ASSERT_TRUE(ll.insert("10"));
     ASSERT_EQ(1, ll.get_size());
     ASSERT_TRUE(ll.insert("20"));
