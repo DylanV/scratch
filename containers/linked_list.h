@@ -27,6 +27,7 @@ public:
     bool insert(const T value);
     int get_index(const T value);
     T get(const int index);
+    T peek_at(const int index);
     bool remove(const int index);
     T operator[](const int& index);
 
@@ -99,6 +100,22 @@ bool LinkedList<T>::insert(const T value) {
 
 template <class T>
 T LinkedList<T>::get(const int index) {
+
+    if(index >= size || index < 0){
+        throw std::out_of_range("Index out of range");
+    }
+
+    ListItem * curr_list_item = head;
+    for(int i=0; i<index; i++){
+        curr_list_item = curr_list_item->next;
+    }
+    T ret_value = curr_list_item->value;
+    remove(index);
+    return ret_value;
+}
+
+template <class T>
+T LinkedList<T>::peek_at(const int index) {
 
     if(index >= size || index < 0){
         throw std::out_of_range("Index out of range");

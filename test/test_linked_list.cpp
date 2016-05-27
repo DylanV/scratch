@@ -20,16 +20,17 @@ TEST(LinkedListIntTest, InsertGetMutiple) {
     LinkedList<int> ll;
 
     ASSERT_TRUE(ll.insert(4));
-    ASSERT_EQ(4, ll.get(0));
+    ASSERT_EQ(4, ll.peek_at(0));
     ASSERT_EQ(1, ll.get_size());
+    ASSERT_EQ(4, ll.get(0));
+    ASSERT_TRUE(ll.insert(4));
 
     ASSERT_TRUE(ll.insert(7));
-    ASSERT_EQ(7, ll.get(1));
     ASSERT_EQ(2, ll.get_size());
 
     ASSERT_TRUE(ll.insert(10));
-    ASSERT_EQ(10, ll.get(2));
     ASSERT_EQ(3, ll.get_size());
+    ASSERT_EQ(10, ll.get(2));
 }
 
 TEST(LinkedListIntTest, InsertMutipleCheckIndices) {
@@ -94,6 +95,7 @@ TEST(LinkedListIntTest, InsertGetWithOperator) {
 TEST(LinkedListTypeTest, Float) {
     LinkedList<float> ll;
     ASSERT_TRUE(ll.insert(10));
+    ASSERT_EQ(10, ll.peek_at(0));
     ASSERT_EQ(1, ll.get_size());
     ASSERT_TRUE(ll.insert(20));
     ASSERT_TRUE(ll.insert(30));
@@ -101,12 +103,13 @@ TEST(LinkedListTypeTest, Float) {
     ASSERT_EQ(2, ll.get_index(30));
     ASSERT_EQ(20, ll.get(1));
     ASSERT_TRUE(ll.remove(0));
-    ASSERT_EQ(0, ll.get_index(20));
+    ASSERT_EQ(0, ll.get_index(30));
 }
 
 TEST(LinkedListTypeTest, String) {
     LinkedList<std::string> ll;
     ASSERT_TRUE(ll.insert("10"));
+    ASSERT_EQ("10", ll.peek_at(0));
     ASSERT_EQ(1, ll.get_size());
     ASSERT_TRUE(ll.insert("20"));
     ASSERT_TRUE(ll.insert("30"));
@@ -114,5 +117,5 @@ TEST(LinkedListTypeTest, String) {
     ASSERT_EQ(2, ll.get_index("30"));
     ASSERT_EQ("20", ll.get(1));
     ASSERT_TRUE(ll.remove(0));
-    ASSERT_EQ(0, ll.get_index("20"));
+    ASSERT_EQ(0, ll.get_index("30"));
 }
