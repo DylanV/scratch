@@ -6,13 +6,10 @@ set(PROJECT_NAME scratch)
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
-
 set(dir ${CMAKE_CURRENT_SOURCE_DIR})
-
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${dir}/build")
 
 include_directories("${PROJECT_SOURCE_DIR}/src")
-
 set (SOURCE_FILES src/linked_list.cpp src/linked_list.h)
 add_library(src_lib ${SOURCE_FILES})
 
@@ -24,7 +21,8 @@ add_subdirectory("${PROJECT_SOURCE_DIR}/ext/gtest")
 
 enable_testing()
 
-include_directories(${gtest_SOURCE_DIR})
+#include_directories(${gtest_SOURCE_DIR})
+include_directories(${GTEST_INCLUDE_DIRS})
 
 include_directories("${PROJECT_SOURCE_DIR}/test")
 

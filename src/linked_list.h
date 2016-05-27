@@ -24,14 +24,16 @@ public:
     ~LinkedList();
 
     int get_size();
-    bool insert(int value);
-    int get_index(int value);
-    int get(int index);
-    bool remove(int index);
+    bool insert(const int value);
+    int get_index(const int value);
+    int get(const int index);
+    bool remove(const int index);
+    int operator[](const int& index);
 
 private:
     int size;
     ListItem* head;
+    ListItem* tail;
 };
 
 
