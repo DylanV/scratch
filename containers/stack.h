@@ -48,7 +48,7 @@ bool Stack<T>::push(const T value) {
 template <class T>
 T Stack<T>::pop() {
     if(empty){
-        throw std::out_of_range("Queue is empty");
+        throw std::out_of_range("Stack is empty");
     }
     T value =  items.get(size - 1);
     size--;
