@@ -106,9 +106,14 @@ T LinkedList<T>::get(const int index) {
     }
 
     ListItem * curr_list_item = head;
-    for(int i=0; i<index; i++){
-        curr_list_item = curr_list_item->next;
+    if(index == size -1){ // kept track of tail so no need to iterate through whole list
+        curr_list_item = tail;
+    } else{
+        for(int i=0; i<index; i++){
+            curr_list_item = curr_list_item->next;
+        }
     }
+
     T ret_value = curr_list_item->value;
     remove(index);
     return ret_value;

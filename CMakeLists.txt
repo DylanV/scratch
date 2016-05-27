@@ -20,7 +20,7 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 include_directories("${PROJECT_SOURCE_DIR}/test")
 
-set (TEST_FILES test/test_linked_list.cpp test/test_queue.cpp)
+set (TEST_FILES test/test_linked_list.cpp test/test_queue.cpp test/test_stack.cpp)
 add_executable(testBasic ${TEST_FILES})
 add_dependencies(testBasic googletest)
 
