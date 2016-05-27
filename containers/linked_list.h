@@ -7,15 +7,14 @@
 
 #include <memory>
 
-//typedef struct ListItem ListItem;
-
-
 
 template <class T> class LinkedList {
 
     struct ListItem{
         T value;
         ListItem* next;
+        ListItem() : next(nullptr) {};
+        ListItem(T value) : value(value), next(nullptr) {};
     };
 
 public:
@@ -39,21 +38,17 @@ private:
 
 
 template <class T>
-LinkedList<T>::LinkedList() {
-    size = 0;
-    head = NULL;
-}
+LinkedList<T>::LinkedList():size(0), head(nullptr) { }
 
 template <class T>
 LinkedList<T>::~LinkedList() {
-    if(head){
-        ListItem * curr_list_item = head;
-        while(curr_list_item != NULL){
-            ListItem * next_list_item = curr_list_item->next;
-            delete(curr_list_item);
-            curr_list_item = next_list_item;
-        }
+    ListItem * curr_list_item = head;
+    while(curr_list_item != nullptr){
+        ListItem * next_list_item = curr_list_item->next;
+        delete(curr_list_item);
+        curr_list_item = next_list_item;
     }
+    head = nullptr;
 }
 
 template <class T>
@@ -82,9 +77,7 @@ template <class T>
 bool LinkedList<T>::insert(const T value) {
 
     if(size == 0){
-        head = new ListItem;
-        head->value = value;
-        head->next = NULL;
+        head = new ListItem(value);
         size += 1;
         tail = head;
     }
