@@ -5,7 +5,7 @@
 #ifndef SCRATCH_STACK_H
 #define SCRATCH_STACK_H
 
-#include "linked_list.h"
+#include "double_linked_list.h"
 
 template <class T> class Stack {
 public:
@@ -17,7 +17,7 @@ public:
     int get_size();
 
 private:
-    LinkedList<T> items;
+    DoubleLinkedList<T> items;
     int size;
     bool empty;
 };
@@ -50,7 +50,7 @@ T Stack<T>::pop() {
     if(empty){
         throw std::out_of_range("Stack is empty");
     }
-    T value =  items.get(size - 1);
+    T value =  items.get_at(size - 1);
     size--;
     if(size ==0 ){
         empty = true;
