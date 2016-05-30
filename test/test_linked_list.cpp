@@ -89,7 +89,26 @@ TEST(LinkedListIntTest, RemoveLastElement) {
 TEST(LinkedListIntTest, InsertGetWithOperator) {
     LinkedList<int> ll;
     ASSERT_TRUE(ll.insert(4));
+    ASSERT_TRUE(ll.insert(2));
+    ASSERT_EQ(2, ll[1]);
     ASSERT_EQ(4, ll[0]);
+    ASSERT_EQ(2, ll.get_size());
+}
+
+TEST(LinkedListIntTest, Swap) {
+    LinkedList<int> ll;
+    ASSERT_TRUE(ll.insert(1));
+    ASSERT_TRUE(ll.insert(2));
+    ASSERT_TRUE(ll.insert(3));
+    ASSERT_TRUE(ll.insert(4));
+    ASSERT_EQ(1, ll.peek_at(0));
+    ASSERT_EQ(2, ll.peek_at(1));
+    ASSERT_TRUE(ll.swap(0, 1));
+    ASSERT_EQ(2, ll.peek_at(0));
+    ASSERT_EQ(1, ll.peek_at(1));
+    ASSERT_TRUE(ll.swap(1, 3));
+    ASSERT_EQ(4, ll.peek_at(1));
+    ASSERT_EQ(1, ll.peek_at(3));
 }
 
 TEST(LinkedListTypeTest, Float) {

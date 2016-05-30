@@ -28,7 +28,8 @@ public:
     T get(const int index);
     T peek_at(const int index);
     bool remove(const int index);
-    T operator[](const int& index);
+    T operator[](const int index);
+    bool swap(int index1, int index2);
 
 private:
     int size;
@@ -127,8 +128,38 @@ T LinkedList<T>::peek_at(const int index) {
 }
 
 template <class T>
-T LinkedList<T>::operator[](const int &index) {
-    return get(index);
+T LinkedList<T>::operator[](const int index) {
+    return this->peek_at(index);
+}
+
+template <class T>
+bool LinkedList<T>::swap(int index1, int index2) {
+    if(index1 < 0 || index1 > size-1 || index1 == index2 || index2 < 0 || index2 > size-1){
+        return false;
+    }
+    ListItem* first = head;
+    ListItem* second = head;
+    int ind1 = index1;
+    int ind2 = index2;
+    if(ind2 < ind1){
+        int temp = ind2;
+        ind2 = ind1;
+        ind1 = temp;
+    }
+
+    assert(ind1 < ind2);
+
+    for(int i=0; i<ind1; i++){
+        first = first->next;
+        second = second->next;
+    }
+    for(int i=0; i<ind2-ind1; i++){
+        second = second->next;
+    }
+
+    T temp = second->value;
+    second->value = first->value;
+    first->value = temp;
 }
 
 template <class T>
