@@ -5,6 +5,8 @@
 #ifndef SCRATCH_DOUBLE_LINKED_LIST_H
 #define SCRATCH_DOUBLE_LINKED_LIST_H
 
+#include <limits.h>
+
 template <class T> class DoubleLinkedList {
 
     struct Node {
@@ -112,7 +114,7 @@ int DoubleLinkedList<T>::index_of(T value) {
 template <class T>
 int DoubleLinkedList<T>::last_index_of(T value) {
     Node* current = tail;
-    int index = size;
+    int index = size - 1;
     while(current != nullptr){
         if(current->value == value){
             return index;
@@ -130,14 +132,16 @@ bool DoubleLinkedList<T>::remove(int index) {
     }
     if(index == 0){ //delete head
         Node* new_head = head->next;
-        new_head->prev = nullptr;
+        if(new_head != nullptr){
+            new_head->prev = nullptr;
+        }
         delete(head);
         head = new_head;
-        if(size == 1){
+        if(size <= 2){
             tail = head;
         }
     }
-    else if(index = size - 1){ //delete tail
+    else if(index == size - 1){ //delete tail
         Node* new_tail = tail->prev;
         new_tail->next = nullptr;
         delete(tail);
@@ -150,7 +154,7 @@ bool DoubleLinkedList<T>::remove(int index) {
         }
         Node* previous = current->prev;
         Node* next = current->next;
-        prev->next = next;
+        previous->next = next;
         next->prev = previous;
         delete(current);
     }
@@ -160,7 +164,7 @@ bool DoubleLinkedList<T>::remove(int index) {
 }
 
 template <class T>
-T DoubleLinkList<T>::get_at(int index) {
+T DoubleLinkedList<T>::get_at(int index) {
     if(size == 0){
         throw std::out_of_range("List is empty");
     }
@@ -168,17 +172,17 @@ T DoubleLinkList<T>::get_at(int index) {
         throw std::out_of_range("Index out of range");
     }
 
-    T value = DoubleLinkList<T>::peek_at(index);
-    DoubleLinkList<T>::remove(index);
+    T value = DoubleLinkedList<T>::peek_at(index);
+    DoubleLinkedList<T>::remove(index);
     return value;
 }
 
 template <class T>
-T DoubleLinkList<T>::get() {
+T DoubleLinkedList<T>::get() {
     if(size == 0){
         throw std::out_of_range("List is empty");
     }
-    return DoubleLinkList<T>::get_at(0);
+    return DoubleLinkedList<T>::get_at(0);
 }
 
 #endif //SCRATCH_DOUBLE_LINKED_LIST_H

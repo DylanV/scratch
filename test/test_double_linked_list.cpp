@@ -50,6 +50,7 @@ TEST(DoubleLinkedListTest, LastIndexOf) {
     ASSERT_TRUE(dll.insert(1));
     ASSERT_TRUE(dll.insert(2));
     ASSERT_TRUE(dll.insert(3));
+
     ASSERT_EQ(1, dll.last_index_of(1));
     ASSERT_EQ(2, dll.last_index_of(2));
     ASSERT_EQ(INT_MAX, dll.last_index_of(6)); //Error
