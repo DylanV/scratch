@@ -25,4 +25,23 @@ void bubble_sort(vector<T> &unsorted) {
     }
 }
 
+template <typename T>
+void selection_sort(vector<T> &unsorted) {
+    for(int i = 0; i<unsorted.size(); i++){ //Grow sorted sublist
+        int min_index = i;
+        //Find minimum in unsorted sublist
+        for(int j = i+1; j<unsorted.size(); j++){
+            if(unsorted[j] < unsorted[min_index]){
+                min_index = j;
+            }
+        }
+        //Swap minimum to top of sorted sublist
+        if(min_index != i){
+            T temp = unsorted[i];
+            unsorted[i] = unsorted[min_index];
+            unsorted[min_index] = temp;
+        }
+    }
+}
+
 #endif //SCRATCH_SORT_H
