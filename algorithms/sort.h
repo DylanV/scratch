@@ -44,4 +44,35 @@ void selection_sort(vector<T> &unsorted) {
     }
 }
 
+template <typename T>
+size_t partition(vector<T> &A, size_t lo, size_t hi) { //https://en.wikipedia.org/wiki/Quicksort
+    T pivot = A[lo];
+    size_t i = lo - 1;
+    size_t j = hi + 1;
+    while(true){
+        do{
+            i++;
+        }while(A[i] < pivot);
+        do{
+            j--;
+        }while(A[j] > pivot);
+        if(i >= j){
+            return j;
+        }
+        //swap A[i] and A[j]
+        T temp = A[i];
+        A[i] = A[j];
+        A[j] = temp;
+    }
+}
+
+template <typename T>
+void quick_sort(vector<T> &A, size_t lo, size_t hi) { //https://en.wikipedia.org/wiki/Quicksort
+    if(lo < hi){
+        size_t p = partition(A, lo, hi);
+        quick_sort(A, lo, p);
+        quick_sort(A, p+1, hi);
+    }
+}
+
 #endif //SCRATCH_SORT_H
